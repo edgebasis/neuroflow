@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="user"
+            type="com.assesment.neuroflow.data.User"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.assesment.neuroflow.ui.custom.RoundedImageView
+                android:id="@+id/iv_profilePic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ef19acc0e93f5f6fa4ff608bc6be2944"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_BackArrow" />
+
+
+
+            <ImageView
+                android:id="@+id/iv_BackArrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="TextView"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_profilePic"
+                app:layout_constraintStart_toEndOf="@+id/iv_profilePic"
+                app:layout_constraintTop_toTopOf="@+id/iv_profilePic"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/textArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/proofileTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_profilePic" />
+
+            <TextView
+                android:id="@+id/tvTimeStamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/timeStamp"
+                app:layout_constraintBottom_toTopOf="@+id/iv_profilePic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_BackArrow" />
+
+
+            <com.vaibhavlakhera.circularprogressview.CircularProgressView
+                android:id="@+id/progressCircle"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="32dp"
+                app:animate="true"
+                app:animateDuration="600"
+                app:fillColor="#E9A0A5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textArea"
+                app:layout_constraintVertical_bias="0.0"
+                app:progress="10"
+                app:progressColor="#FFF"
+                app:progressRoundCap="true"
+                app:progressTextColor="#FFF"
+                app:progressTextEnabled="true"
+                app:progressTextSize="32sp"
+                app:progressTextType="progress"
+                app:progressWidth="12dp"
+                app:startAngle="270"
+                app:total="100"
+                app:totalColor="#00BCD4"
+                app:totalWidth="20dp" />
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvscore"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/progressCircle"
+                app:layout_constraintStart_toStartOf="@+id/progressCircle"
+                app:layout_constraintTop_toBottomOf="@+id/progressCircle" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+
+</layout>

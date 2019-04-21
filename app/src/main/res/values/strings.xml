@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NeuroFlow</string>
+    <string name="name">Name</string>
+    <string name="user_profile">User Profile</string>
+    <string name="proofileTextView">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer.</string>
+    <string name="lastMonth">Last Month</string>
+    <string name="currentMonth">Current  Month</string>
+    <string name="goal">Goal</string>
+    <string name="percentageValue">80%</string>
+    <string name="timeStamp">04/20/2019 23:00:00</string>
+    <string name="tvscore">Score</string>
+</resources>
