@@ -43,6 +43,7 @@ dependencies {
 
     implementation 'com.github.VaibhavLakhera:Circular-Progress-View:0.1.0'
 
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
@@ -53,5 +54,3 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
     androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
 }
-
-

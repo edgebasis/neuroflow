@@ -4,6 +4,7 @@ public class User {
     String name;
     int score;
     String timestamp;
+    int image;
 
     public User() {
     }
@@ -12,6 +13,7 @@ public class User {
         this.name = name;
         this.score = score;
         this.timestamp = timestamp;
+
     }
 
     public String getName() {
@@ -36,5 +38,13 @@ public class User {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }

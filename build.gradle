@@ -49,6 +49,7 @@ ext {
 
     circularProgressBar = '1.0.1'
 
+    gsonVersion = '2.8.5'
 
     // Test dependencies
     junitVersion = '4.12'
