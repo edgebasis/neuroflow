@@ -42,7 +42,7 @@ dependencies {
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
 
     implementation 'com.github.VaibhavLakhera:Circular-Progress-View:0.1.0'
-
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.2.0'
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     testImplementation "junit:junit:$rootProject.ext.junitVersion"

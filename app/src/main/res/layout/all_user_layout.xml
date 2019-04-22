@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.assesment.neuroflow.ui.custom.RoundedImageView
+        android:id="@+id/iv_allUsersProfilePic"
+        android:layout_width="74dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ef19acc0e93f5f6fa4ff608bc6be2944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_allUsersName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_allUsersProfilePic"
+        app:layout_constraintStart_toEndOf="@+id/iv_allUsersProfilePic"
+        app:layout_constraintTop_toTopOf="@+id/iv_allUsersProfilePic"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tv_allUsersTimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/timeStamp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_allUsersName"
+        app:layout_constraintStart_toEndOf="@+id/iv_allUsersProfilePic"
+        app:layout_constraintTop_toTopOf="@+id/iv_allUsersProfilePic"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.vaibhavlakhera.circularprogressview.CircularProgressView
+        android:id="@+id/allUsersrogressCircle"
+        android:layout_width="58dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="16dp"
+        app:animate="true"
+        app:animateDuration="600"
+        app:fillColor="#E9A0A5"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_allUsersProfilePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_allUsersProfilePic"
+        app:progress="10"
+        app:progressColor="#FFF"
+        app:progressRoundCap="true"
+        app:progressTextColor="#FFF"
+        app:progressTextEnabled="true"
+        app:progressTextSize="14sp"
+        app:progressTextType="progress"
+        app:progressWidth="4dp"
+        app:startAngle="270"
+        app:total="100"
+        app:totalColor="#00BCD4"
+        app:totalWidth="10dp" />
+</android.support.constraint.ConstraintLayout>

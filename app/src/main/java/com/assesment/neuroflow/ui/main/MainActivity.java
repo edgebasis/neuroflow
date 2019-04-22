@@ -1,8 +1,6 @@
 package com.assesment.neuroflow.ui.main;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,9 +10,13 @@ import android.widget.TextView;
 
 import com.assesment.neuroflow.R;
 import com.assesment.neuroflow.data.User;
+import com.assesment.neuroflow.utils.Common;
 import com.google.gson.Gson;
 import com.vaibhavlakhera.circularprogressview.CircularProgressView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -48,10 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
         });
 
+        String date;
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Common.DATE_PATTERN);
+
+        date = simpleDateFormat.format(new Date(user.getTimestamp()));
+
         profilePic = findViewById(R.id.iv_profilePic);
         timeStamp = findViewById(R.id.tvTimeStamp);
         name = findViewById(R.id.tvName);
-        timeStamp.setText(user.getTimestamp());
+        timeStamp.setText(date);
         name.setText(user.getName());
 
         profilePic.setImageResource(user.getImage());
