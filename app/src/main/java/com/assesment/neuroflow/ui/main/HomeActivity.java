@@ -48,25 +48,25 @@ public class HomeActivity extends AppCompatActivity {
         String datePattern = "dd-MM-yyyy hh:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
 
-        date = simpleDateFormat.format(new Date((long) Long.valueOf("1546341851000") * 1000));
+        date = simpleDateFormat.format(new Date((long) Long.valueOf("1546341851000")));
         user = new User("Ryan", 90, date);
         int imageId = getResourceId(this, "ryan", "drawable", getPackageName());
         user.setImage(imageId);
         usersList.add(user);
 
-        date = simpleDateFormat.format(new Date((long) Long.valueOf("1540341851000") * 1000));
+        date = simpleDateFormat.format(new Date((long) Long.valueOf("1540341851000")));
         user = new User("Melissa", 90, date);
         imageId = getResourceId(this, "mels", "drawable", getPackageName());
         user.setImage(imageId);
         usersList.add(user);
 
-        date = simpleDateFormat.format(new Date((long) Long.valueOf("1540341651000") * 1000));
+        date = simpleDateFormat.format(new Date((long) Long.valueOf("1540341651000")));
         user = new User("Ryan", 85, date);
         imageId = getResourceId(this, "ryan", "drawable", getPackageName());
         user.setImage(imageId);
         usersList.add(user);
 
-        date = simpleDateFormat.format(new Date((long) Long.valueOf("1536442851000") * 1000));
+        date = simpleDateFormat.format(new Date((long) Long.valueOf("1536442851000")));
         user = new User("Sam", 98, date);
         imageId = getResourceId(this, "sam", "drawable", getPackageName());
         user.setImage(imageId);
