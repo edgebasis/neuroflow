@@ -9,6 +9,6 @@
     <string name="percentageValue">80%</string>
     <string name="timeStamp">04/20/2019 23:00:00</string>
     <string name="tvscore">Score</string>
-    <string name="female_title">Female</string>
-    <string name="male_title">Male</string>
+    <string name="female_title">Females</string>
+    <string name="male_title">Males</string>
 </resources>

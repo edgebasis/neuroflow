@@ -1,11 +1,11 @@
 package com.assesment.neuroflow.data;
 
 public class User implements Comparable<User> {
-    String name;
-    int score;
-    Long timestamp;
-    int image;
-    int gender;
+    private String name;
+    private int score;
+    private Long timestamp;
+    private int image;
+    private int gender;
 
     public int getGender() {
         return gender;

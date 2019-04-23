@@ -54,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_allUsersProfilePic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_allUsersProfilePic"
-        app:progress="10"
+        app:progress="0"
         app:progressColor="#FFF"
         app:progressRoundCap="true"
         app:progressTextColor="#FFF"

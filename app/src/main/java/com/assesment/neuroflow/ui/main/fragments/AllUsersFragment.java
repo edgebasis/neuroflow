@@ -3,7 +3,7 @@ package com.assesment.neuroflow.ui.main.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceActivity;
+
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,26 +18,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.assesment.neuroflow.R;
-import com.assesment.neuroflow.data.User;
-import com.assesment.neuroflow.ui.main.HomeActivity;
+import com.assesment.neuroflow.data.Gender;
+import com.assesment.neuroflow.data.ResponseData;
+
 import com.assesment.neuroflow.ui.main.MainActivity;
 import com.assesment.neuroflow.utils.Common;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.vaibhavlakhera.circularprogressview.CircularProgressView;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+
+import static com.assesment.neuroflow.ui.main.HomeActivity.getResourceId;
 
 public class AllUsersFragment extends Fragment {
 
@@ -45,16 +46,15 @@ public class AllUsersFragment extends Fragment {
     private final Handler mHandler = new Handler();
 
     private static final String ARG_USERS_LIST = "argUsers";
-    private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
     private SectionedRecyclerViewAdapter sectionAdapter;
 
 
-    private ArrayList<User> usersList = new ArrayList<>();
+    private ArrayList<ResponseData> usersList = new ArrayList<>();
 
     View view;
-    public static AllUsersFragment newInstance(List<User> users) {
-
+    public static AllUsersFragment newInstance(List<ResponseData> users) {
+        Log.e(TAG, "onCreateView: "+ users.size() );
         AllUsersFragment fragment = new AllUsersFragment();
 
         Gson gson = new Gson();
@@ -75,9 +75,9 @@ public class AllUsersFragment extends Fragment {
 
 
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<User>>(){}.getType();
+        Type listType = new TypeToken<List<ResponseData>>(){}.getType();
         ArrayList readFromJason = gson.fromJson(jsonData, listType);
-        User user = (User) readFromJason.get(0);
+
         this.usersList = readFromJason;
         setup(usersList);
 
@@ -94,9 +94,9 @@ public class AllUsersFragment extends Fragment {
         super.onDetach();
     }
 
-    private void setup(ArrayList<User> users) {
+    private void setup(ArrayList<ResponseData> users) {
 
-        ArrayList<User> userArrayList = new ArrayList<>();
+
 
 
         UsersSection malesSection = new UsersSection(UsersSection.MALE);
@@ -106,9 +106,9 @@ public class AllUsersFragment extends Fragment {
         sectionAdapter.addSection(malesSection);
         sectionAdapter.addSection(femalesSection);
 
-        loadUsers(femalesSection, users);
+        loadUsers(femalesSection, users.get(1).getGender());
 
-        loadUsers(malesSection, users);
+        loadUsers(malesSection, users.get(0).getGender());
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -116,25 +116,17 @@ public class AllUsersFragment extends Fragment {
 
     }
 
-    private void loadUsers(final UsersSection section, final ArrayList<User> uList) {
+    private void loadUsers(final UsersSection section, final List<Gender> users) {
 
         section.setHasFooter(false);
 
-        ArrayList<User> usersList = new ArrayList<>();
+        List<Gender> usersList = new ArrayList<>();
         switch(section.getGender()){
             case UsersSection.FEMALE:
-                for(User user : uList){
-                    if(user.getGender()=='f') {
-                        usersList.add(user);
-                    }
-                }
+                usersList = users;
                 break;
             case UsersSection.MALE:
-                for(User user : uList){
-                    if(user.getGender()=='m') {
-                        usersList.add(user);
-                    }
-                }
+                usersList = users;
                 break;
             default:
                 throw new IllegalStateException("Invalid section");
@@ -156,7 +148,7 @@ public class AllUsersFragment extends Fragment {
 
         final int gender;
         String title;
-        List<User> list;
+        List<Gender> list;
 
         /**
          * Create a Section object based on {@link SectionParameters}.
@@ -190,7 +182,7 @@ public class AllUsersFragment extends Fragment {
             return gender;
         }
 
-        void setList(List<User> list){
+        void setList(List<Gender> list){
             this.list = list;
         }
 
@@ -207,15 +199,17 @@ public class AllUsersFragment extends Fragment {
         @Override
         public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
             final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-            User user = list.get(position);
+            Gender user = list.get(position);
             String date;
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Common.DATE_PATTERN);
 
-            date = simpleDateFormat.format(new Date((long) user.getTimestamp()));
-            itemViewHolder.tvName.setText(user.getName());
+            date = simpleDateFormat.format(new Date((long) user.getDate_created()));
+            itemViewHolder.tvName.setText(Character.toUpperCase(user.getName().charAt(0))+user.getName().substring(1));
             itemViewHolder.tvTimeStamp.setText(date);
-            itemViewHolder.profilePic.setImageResource(user.getImage());
+            int imageId = getResourceId(getContext(), user.getName(), "drawable", getContext().getPackageName());
+
+            itemViewHolder.profilePic.setImageResource(imageId);
             itemViewHolder.progressView.setProgress(user.getScore(), true);
 
             itemViewHolder.rootView.setOnClickListener(new View.OnClickListener() {
@@ -273,7 +267,7 @@ public class AllUsersFragment extends Fragment {
             footerHeader.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   // loadUsers(UsersSection.this);
+
                 }
             });
         }

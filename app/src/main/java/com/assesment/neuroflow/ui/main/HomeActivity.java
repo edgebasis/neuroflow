@@ -6,41 +6,61 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.assesment.neuroflow.R;
+import com.assesment.neuroflow.data.ResponseData;
 import com.assesment.neuroflow.data.User;
+import com.assesment.neuroflow.network.DataFromApi;
 import com.assesment.neuroflow.ui.main.fragments.AllUsersFragment;
 import com.assesment.neuroflow.ui.main.fragments.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HomeActivity extends AppCompatActivity {
+
+    private static final String TAG = "HomeActivity";
 
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
     private ViewPager viewPager;
     private User user;
     private List<User> usersList = new ArrayList<>();
+    private List<ResponseData> apiUsersList = new ArrayList<>();
+    private DataFromApi dataFromApi = new DataFromApi();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        tabLayout = findViewById(R.id.tabLayout);
-        appBarLayout = findViewById(R.id.appbar);
-        viewPager = findViewById(R.id.viewPager);
-        loadData();
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AllUsersFragment().newInstance(usersList), "All Users" );
 
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        dataFromApi.loadDataFromApi(new Callback<List<ResponseData>>() {
+            @Override
+            public void onResponse(Call<List<ResponseData>> call, Response<List<ResponseData>> response) {
+                tabLayout = findViewById(R.id.tabLayout);
+                appBarLayout = findViewById(R.id.appbar);
+                viewPager = findViewById(R.id.viewPager);
+                apiUsersList = response.body();
+                ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+                adapter.addFragment(new AllUsersFragment().newInstance(apiUsersList), "All Users" );
+                viewPager.setAdapter(adapter);
+                tabLayout.setupWithViewPager(viewPager);
+            }
 
-
+            @Override
+            public void onFailure(Call<List<ResponseData>> call, Throwable t) {
+                Log.e(TAG, "onFailure: ", t );
+            }
+        });
 
     }
+
 
     private void loadData(){
 

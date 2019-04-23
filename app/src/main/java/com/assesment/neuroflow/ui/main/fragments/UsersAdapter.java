@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.assesment.neuroflow.R;
-import com.assesment.neuroflow.data.User;
+import com.assesment.neuroflow.data.ResponseData;
+
 import com.assesment.neuroflow.utils.Common;
 import com.vaibhavlakhera.circularprogressview.CircularProgressView;
 
@@ -20,7 +21,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
-    private List<User> usersList;
+    private List<ResponseData> usersList;
     private SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
 
 
